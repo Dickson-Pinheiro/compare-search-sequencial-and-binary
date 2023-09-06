@@ -33,19 +33,21 @@ int sequencial_search(int nums[], int item, int size){
 
 int main()
 {
+    std::srand(std::time(nullptr));
     int vet[1000];
     vet[0] = 1;
     clock_t time_req;
-    for(int i = 10; i <= 1000; i++){
+    for(int i = 10; i <= 1000; i+=10){
         for(int j = 0; j < i; j++){
             vet[j] = i*j;
         }
         time_req = clock();
         for(int k = 0; k < 100; k++){
+            int random = std::rand() % i;
             /*
             binary_search(vet, 23, 0, i);
             */
-           sequencial_search(vet, 23, i);
+           sequencial_search(vet, random, i);
         }
         time_req = clock()- time_req;
         cout << i << " " << (float)time_req/CLOCKS_PER_SEC << endl;
@@ -59,6 +61,5 @@ int main()
     
     return 0;
 }
-
 
 
